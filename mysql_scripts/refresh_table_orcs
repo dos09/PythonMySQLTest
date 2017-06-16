@@ -1,0 +1,18 @@
+drop table if exists orcs;
+
+create table orcs(
+	id int auto_increment,
+    clan varchar(100),
+    name varchar(100) not null,
+    kills int,
+    primary key(id)
+);
+
+insert into orcs(clan, name, kills) values('Black wolfs', 'Lib', 4);
+insert into orcs(clan, name, kills) values('Black wolfs', 'Mogka', 13);
+insert into orcs(clan, name, kills) values('Red orcs', 'Aop', 6);
+insert into orcs(clan, name, kills) values('Red orcs', 'Igra', 3);
+insert into orcs(clan, name, kills) values('Red orcs', 'Nikfara', 13);
+insert into orcs(clan, name, kills) values('Pirates', 'Bale', 4);
+
+select id, clan, name, kills from orcs;

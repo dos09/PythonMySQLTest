@@ -1,0 +1,16 @@
+class MySQLConnector:
+    BATCH_LIMIT = 1
+    
+    def __init__(self):
+        self.connection = pymysql.connect(...
+                             cursorclass=pymysql.cursors.DictCursor)
+    
+    def get_s3_bucket_names(self):
+        with self.connection.cursor() as cursor:
+            sql = "select fieldA from tableA limit %s, %s"
+            offset = 0
+            while cursor.execute(sql, [offset, self.BATCH_LIMIT]):
+                print('loop:')
+                offset += self.BATCH_LIMIT
+                for row in cursor.fetchall():
+                    print(row)
